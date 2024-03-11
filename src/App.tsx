@@ -11,12 +11,6 @@ import HomePage from "./pages/Homepage/HomePage";
 function App() {
   const [mails, setMails] = useState<Mail[]>([]);
 
-  const [mailForm, setMailForm] = useState<Mail>({
-    sender: "",
-    subject: "",
-    message: "",
-  });
-
   const [articles, setArticles] = useState<Article[]>([]);
 
   return (
@@ -26,13 +20,7 @@ function App() {
         <Route
           path="/"
           element={
-            <HomePage
-              articles={articles}
-              mailForm={mailForm}
-              setMailForm={setMailForm}
-              mails={mails}
-              setMails={setMails}
-            />
+            <HomePage articles={articles} mails={mails} setMails={setMails} />
           }
         ></Route>
         <Route path="/blog" element={<BlogPage articles={articles} />}></Route>

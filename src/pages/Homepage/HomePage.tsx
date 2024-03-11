@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import ArticleCard from "../../components/ArticleCard";
 import MailCard from "../../components/MailCard";
@@ -7,19 +7,16 @@ import Mail from "../../interfaces/Mail";
 
 interface HomePageProps {
   articles: Article[];
-  mailForm: Mail;
-  setMailForm: Dispatch<SetStateAction<Mail>>;
   mails: Mail[];
   setMails: Dispatch<SetStateAction<Mail[]>>;
 }
 
-export default function HomePage({
-  articles,
-  mailForm,
-  setMailForm,
-  mails,
-  setMails,
-}: HomePageProps) {
+export default function HomePage({ articles, mails, setMails }: HomePageProps) {
+  const [mailForm, setMailForm] = useState<Mail>({
+    sender: "",
+    subject: "",
+    message: "",
+  });
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ): void => {
@@ -28,7 +25,8 @@ export default function HomePage({
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    setMails([{ ...mailForm, created_at: new Date() }, ...mails]);
+    mailForm.created_at = new Date();
+    setMails((prevMails) => [mailForm, ...prevMails]);
     setMailForm({ sender: "", subject: "", message: "" });
   };
   const lastArticle: Article = articles[0];

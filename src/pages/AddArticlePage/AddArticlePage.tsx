@@ -24,6 +24,7 @@ export default function AddArticlePage({ setArticles }: AddArticlePageProps) {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
+    articleForm.created_at = new Date();
     setArticles((prevArticles) => [articleForm, ...prevArticles]);
     setArticleForm({
       author: "",
