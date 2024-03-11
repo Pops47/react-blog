@@ -24,7 +24,7 @@ export default function AddArticlePage({ setArticles }: AddArticlePageProps) {
 
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    setArticles((prevArticles) => [...prevArticles, articleForm]);
+    setArticles((prevArticles) => [articleForm, ...prevArticles]);
     setArticleForm({
       author: "",
       imgUrl: "",
