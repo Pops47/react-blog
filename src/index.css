@@ -1,0 +1,9 @@
+@tailwind base;
+@layer base {
+  textarea {
+    resize: none;
+  }
+}
+
+@tailwind components;
+@tailwind utilities;
