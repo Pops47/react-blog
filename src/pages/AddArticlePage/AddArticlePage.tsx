@@ -1,13 +1,15 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
-import ArticleForm from "../../interfaces/data/ArticleForm";
-import AddArticlePageProps from "../../interfaces/props/AddArticlePageProps";
+import Article from "../../interfaces/Article";
 
-export default function AddArticlePage({
-  articles,
-  setArticles,
-}: AddArticlePageProps) {
-  const [articleForm, setArticleForm] = useState<ArticleForm>({
+interface AddArticlePageProps {
+  setArticles: Dispatch<SetStateAction<Article[]>>;
+}
+
+export default function AddArticlePage({ setArticles }: AddArticlePageProps) {
+  const navigate: NavigateFunction = useNavigate();
+
+  const [articleForm, setArticleForm] = useState<Article>({
     author: "",
     imgUrl: "",
     title: "",
@@ -20,11 +22,9 @@ export default function AddArticlePage({
     setArticleForm({ ...articleForm, [e.target.name]: e.target.value });
   };
 
-  const navigate: NavigateFunction = useNavigate();
-
   const handleSubmit = (e: React.FormEvent): void => {
     e.preventDefault();
-    setArticles([{ ...articleForm, created_at: new Date() }, ...articles]);
+    setArticles((prevArticles) => [...prevArticles, articleForm]);
     setArticleForm({
       author: "",
       imgUrl: "",

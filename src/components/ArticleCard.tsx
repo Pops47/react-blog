@@ -1,4 +1,9 @@
-import ArticleCardProps from "../interfaces/props/ArticleCardProps";
+import Article from "../interfaces/Article";
+
+interface ArticleCardProps {
+  article: Article;
+  key?: number;
+}
 
 export default function ArticleBox({ article }: ArticleCardProps) {
   return (
@@ -8,8 +13,8 @@ export default function ArticleBox({ article }: ArticleCardProps) {
         <div className="flex gap-4">
           <div>{article.title}</div>
           <div>
-            {article.created_at.toLocaleDateString()} -{" "}
-            {article.created_at.toLocaleTimeString()}
+            {article.created_at?.toLocaleDateString()} -{" "}
+            {article.created_at?.toLocaleTimeString()}
           </div>
         </div>
         <div>{article.content}</div>

@@ -3,4 +3,5 @@ export default interface Article {
   imgUrl: string;
   title: string;
   content: string;
+  created_at?: Date;
 }

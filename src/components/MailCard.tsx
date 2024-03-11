@@ -1,4 +1,9 @@
+import Mail from "../interfaces/Mail";
 import MailCardProps from "../interfaces/props/MailCardProps";
+
+interface MailCardProps {
+  mail: Mail;
+}
 
 export default function ArticleBox({ mail }: MailCardProps) {
   return (
@@ -9,8 +14,8 @@ export default function ArticleBox({ mail }: MailCardProps) {
         <div className="w-4/6 line-clamp-1">{mail.message}</div>
       </div>
       <div>
-        {mail.created_at.toLocaleDateString()} -{" "}
-        {mail.created_at.toLocaleTimeString()}
+        {mail.created_at?.toLocaleDateString()} -{" "}
+        {mail.created_at?.toLocaleTimeString()}
       </div>
     </div>
   );

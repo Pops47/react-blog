@@ -1,5 +1,9 @@
 import ArticleCard from "../../components/ArticleCard";
-import BlogPageProps from "../../interfaces/props/BlogPageProps";
+import Article from "../../interfaces/Article";
+
+interface BlogPageProps {
+  articles: Article[];
+}
 
 export default function BlogPage({ articles }: BlogPageProps) {
   return (

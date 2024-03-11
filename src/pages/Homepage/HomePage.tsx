@@ -1,8 +1,17 @@
+import { Dispatch, SetStateAction } from "react";
 import { NavigateFunction, useNavigate } from "react-router-dom";
 import ArticleCard from "../../components/ArticleCard";
 import MailCard from "../../components/MailCard";
-import Article from "../../interfaces/data/Article";
-import HomePageProps from "../../interfaces/props/HomePageProps";
+import Article from "../../interfaces/Article";
+import Mail from "../../interfaces/Mail";
+
+interface HomePageProps {
+  articles: Article[];
+  mailForm: Mail;
+  setMailForm: Dispatch<SetStateAction<Mail>>;
+  mails: Mail[];
+  setMails: Dispatch<SetStateAction<Mail[]>>;
+}
 
 export default function HomePage({
   articles,
