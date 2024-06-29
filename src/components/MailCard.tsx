@@ -1,5 +1,4 @@
 import Mail from "../interfaces/Mail";
-import MailCardProps from "../interfaces/props/MailCardProps";
 
 interface MailCardProps {
   mail: Mail;
